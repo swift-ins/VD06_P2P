@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета пользователя</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #555;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #6c63ff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5a52d4;
+        }
+        .card {
+            margin-top: 30px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .card li {
+            list-style: none;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Анкета пользователя</h1>
+        <form method="post">
+            <label>Имя:
+                <input type="text" name="name" required>
+            </label>
+            <label>Город:
+                <input type="text" name="city" required>
+            </label>
+            <label>Хобби:
+                <input type="text" name="hobby" required>
+            </label>
+            <label>Работа:
+                <input type="text" name="job" required>
+            </label>
+            <label>Возраст:
+                <input type="number" name="age" required>
+            </label>
+            <button type="submit">Отправить</button>
+        </form>
+
+        {% if user_data %}
+        <div class="card">
+            <h2>Введённые данные</h2>
+            <ul>
+                <li><strong>Имя:</strong> {{ user_data.name }}</li>
+                <li><strong>Город:</strong> {{ user_data.city }}</li>
+                <li><strong>Хобби:</strong> {{ user_data.hobby }}</li>
+                <li><strong>Работа:</strong> {{ user_data.job }}</li>
+                <li><strong>Возраст:</strong> {{ user_data.age }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
